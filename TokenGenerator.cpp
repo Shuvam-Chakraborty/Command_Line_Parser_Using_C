@@ -225,10 +225,13 @@ int process(char* str, char* newStr, int check)
 		}
 		else
 		{
-			if(str[i]!='/') newStr[j++]=str[i];
+			if(str[i]!='/') 
+			{
+				newStr[j++]=str[i];	
+			}
 			else
 			{
-				if(len-i>=2 && str[i]=='/')
+				if(len-i>=2)
 				{
 					if(str[i+1]=='/') break;
 					else if(len-i>=4 && str[i+1]=='*')
@@ -238,6 +241,10 @@ int process(char* str, char* newStr, int check)
 						while(i!=len && !(str[i]=='/' && str[i-1]=='*')) i++;
 						if(i==len) break;
 						check=0;
+					}
+					else
+					{
+						newStr[j++]=str[i];
 					}
 				}
 			}
